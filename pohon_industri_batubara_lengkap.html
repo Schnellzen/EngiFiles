@@ -1,0 +1,257 @@
+
+<h2 class="sr-only">Pohon industri berbasis batubara dengan 7 jalur pemanfaatan utama</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.tree-wrap{padding:16px 12px 24px;font-size:13px;color:var(--color-text-primary)}
+.tree-title{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:14px;padding-left:4px}
+.node-root{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:10px;font-weight:500;font-size:14px;cursor:default;margin-bottom:10px}
+ul.tree{list-style:none;padding-left:0}
+ul.tree ul{padding-left:20px;border-left:1.5px solid var(--color-border-secondary)}
+li.item{position:relative;margin:2px 0}
+li.item::before{content:'';position:absolute;left:-20px;top:50%;width:14px;height:1.5px;background:var(--color-border-secondary)}
+.label{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12.5px;font-weight:400;transition:opacity .15s;user-select:none;line-height:1.4}
+.label:hover{opacity:.75}
+.label.has-children{font-weight:500;cursor:pointer}
+.label .toggle{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;border-radius:3px;font-size:10px;font-weight:700;flex-shrink:0;transition:transform .2s}
+.label .toggle.open{transform:rotate(90deg)}
+.leaf{cursor:default}
+.leaf:hover{opacity:1}
+.children{display:none}
+.children.open{display:block}
+
+.c1 .label.has-children{background:#FAECE7;color:#712B13;border:0.5px solid #F0997B}
+.c1 ul{border-color:#F0997B55}
+.c1 li::before{background:#F0997B55}
+
+.c2 .label.has-children{background:#FAEEDA;color:#633806;border:0.5px solid #EF9F27}
+.c2 ul{border-color:#EF9F2755}
+.c2 li::before{background:#EF9F2755}
+
+.c3 .label.has-children{background:#EEEDFE;color:#3C3489;border:0.5px solid #AFA9EC}
+.c3 ul{border-color:#AFA9EC55}
+.c3 li::before{background:#AFA9EC55}
+
+.c4 .label.has-children{background:#E1F5EE;color:#085041;border:0.5px solid #5DCAA5}
+.c4 ul{border-color:#5DCAA555}
+.c4 li::before{background:#5DCAA555}
+
+.c5 .label.has-children{background:#E6F1FB;color:#0C447C;border:0.5px solid #85B7EB}
+.c5 ul{border-color:#85B7EB55}
+.c5 li::before{background:#85B7EB55}
+
+.c6 .label.has-children{background:#FBEAF0;color:#72243E;border:0.5px solid #ED93B1}
+.c6 ul{border-color:#ED93B155}
+.c6 li::before{background:#ED93B155}
+
+.c7 .label.has-children{background:#EAF3DE;color:#27500A;border:0.5px solid #97C459}
+.c7 ul{border-color:#97C45955}
+.c7 li::before{background:#97C45955}
+
+.leaf-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11.5px;color:var(--color-text-secondary);background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary)}
+
+.btn-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.btn-ctrl{padding:4px 12px;border-radius:6px;border:0.5px solid var(--color-border-primary);background:var(--color-background-secondary);color:var(--color-text-secondary);font-size:12px;cursor:pointer}
+.btn-ctrl:hover{background:var(--color-background-tertiary)}
+</style>
+
+<div class="tree-wrap">
+<div class="tree-title">Pohon industri berbasis batubara</div>
+<div class="btn-row">
+  <button class="btn-ctrl" onclick="expandAll()">Buka semua</button>
+  <button class="btn-ctrl" onclick="collapseAll()">Tutup semua</button>
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+  <div class="node-root" style="background:#2C2C2A;color:#F1EFE8">Batubara</div>
+  <span style="font-size:11px;color:var(--color-text-secondary)">Klik cabang untuk expand / collapse</span>
+</div>
+
+<ul class="tree" id="root-tree">
+
+<li class="item c1">
+  <span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>1. Pemanfaatan langsung</span>
+  <ul class="children">
+    <li class="item c1"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Pembangkit listrik (PLTU)</span>
+      <ul class="children">
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Listrik</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Uap proses industri</span></span></li>
+      </ul>
+    </li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Industri semen</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Industri metalurgi</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Boiler industri</span></span></li>
+  </ul>
+</li>
+
+<li class="item c2">
+  <span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>2. Pencucian dan upgrading batubara</span>
+  <ul class="children">
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Batubara bersih (clean coal)</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Batubara nilai kalor tinggi</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Coal briquette</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Bio-coal / co-firing fuel</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Coal water mixture (CWM)</span></span></li>
+  </ul>
+</li>
+
+<li class="item c3">
+  <span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>3. Karbonisasi / pirolisis</span>
+  <ul class="children">
+    <li class="item c3"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Coke</span>
+      <ul class="children">
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Blast furnace coke</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Foundry coke</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Ferroalloy coke</span></span></li>
+      </ul>
+    </li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Semi-coke</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Char</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Activated carbon</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Carbon black</span></span></li>
+    <li class="item c3"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Graphite material</span>
+      <ul class="children">
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Battery anode material</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Synthetic graphite</span></span></li>
+      </ul>
+    </li>
+    <li class="item c3"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Coal tar</span>
+      <ul class="children">
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Pitch</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Creosote oil</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Naphthalene</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Phenol</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Aromatics</span></span></li>
+      </ul>
+    </li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Coal gas</span></span></li>
+  </ul>
+</li>
+
+<li class="item c4">
+  <span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>4. Gasifikasi batubara</span>
+  <ul class="children">
+    <li class="item c4"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Syngas (CO + H₂)</span>
+      <ul class="children">
+        <li class="item c4"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Hydrogen (H₂)</span>
+          <ul class="children">
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Fuel cell</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Refinery</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Industrial gas</span></span></li>
+          </ul>
+        </li>
+        <li class="item c4"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Synthetic natural gas (SNG)</span>
+          <ul class="children">
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Gas jaringan</span></span></li>
+          </ul>
+        </li>
+        <li class="item c4"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Methanol</span>
+          <ul class="children">
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Formaldehyde</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Acetic acid</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">DME</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Olefin (MTO)</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Gasoline (MTG)</span></span></li>
+          </ul>
+        </li>
+        <li class="item c4"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Ammonia</span>
+          <ul class="children">
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Urea</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Ammonium nitrate</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">NPK fertilizer</span></span></li>
+          </ul>
+        </li>
+        <li class="item c4"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Fischer-Tropsch products</span>
+          <ul class="children">
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Synthetic diesel</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Jet fuel</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Naphtha</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Wax</span></span></li>
+          </ul>
+        </li>
+        <li class="item c4"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Oxo chemicals</span>
+          <ul class="children">
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Alcohols</span></span></li>
+            <li class="item"><span class="label leaf"><span class="leaf-tag">Aldehydes</span></span></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="item c4"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Slag</span>
+      <ul class="children">
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Material konstruksi</span></span></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+
+<li class="item c5">
+  <span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>5. Liquefaction (CTL)</span>
+  <ul class="children">
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Synthetic crude oil</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Diesel</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Gasoline</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Jet fuel</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Lubricant base oil</span></span></li>
+  </ul>
+</li>
+
+<li class="item c6">
+  <span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>6. Ekstraksi material karbon lanjut</span>
+  <ul class="children">
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Carbon fiber</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Graphene</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Carbon nanotube (CNT)</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Battery material</span></span></li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Advanced carbon material</span></span></li>
+  </ul>
+</li>
+
+<li class="item c7">
+  <span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>7. Produk samping dan mineral</span>
+  <ul class="children">
+    <li class="item c7"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Fly ash</span>
+      <ul class="children">
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Semen</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Geopolymer</span></span></li>
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Material konstruksi</span></span></li>
+      </ul>
+    </li>
+    <li class="item c7"><span class="label has-children" onclick="toggle(this)"><span class="toggle">▶</span>Bottom ash</span>
+      <ul class="children">
+        <li class="item"><span class="label leaf"><span class="leaf-tag">Agregat</span></span></li>
+      </ul>
+    </li>
+    <li class="item"><span class="label leaf"><span class="leaf-tag">Rare earth elements</span></span></li>
+  </ul>
+</li>
+
+</ul>
+
+<div style="margin-top:16px;padding-top:12px;border-top:0.5px solid var(--color-border-tertiary);display:flex;flex-wrap:wrap;gap:10px;font-size:11.5px;color:var(--color-text-secondary)">
+  <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#F0997B;display:inline-block"></span>Pemanfaatan langsung</span>
+  <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#EF9F27;display:inline-block"></span>Upgrading</span>
+  <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#AFA9EC;display:inline-block"></span>Karbonisasi</span>
+  <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#5DCAA5;display:inline-block"></span>Gasifikasi</span>
+  <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#85B7EB;display:inline-block"></span>Likuifaksi</span>
+  <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#ED93B1;display:inline-block"></span>Karbon lanjut</span>
+  <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#97C459;display:inline-block"></span>Produk samping</span>
+</div>
+</div>
+
+<script>
+function toggle(el){
+  const ch=el.nextElementSibling;
+  const t=el.querySelector('.toggle');
+  if(!ch)return;
+  const open=ch.classList.toggle('open');
+  t.classList.toggle('open',open);
+}
+function expandAll(){
+  document.querySelectorAll('.children').forEach(c=>c.classList.add('open'));
+  document.querySelectorAll('.toggle').forEach(t=>t.classList.add('open'));
+}
+function collapseAll(){
+  document.querySelectorAll('.children').forEach(c=>c.classList.remove('open'));
+  document.querySelectorAll('.toggle').forEach(t=>t.classList.remove('open'));
+}
+</script>
